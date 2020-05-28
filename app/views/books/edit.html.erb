@@ -1,0 +1,16 @@
+<h3>Edit Review</h3>
+<%= form_tag("/books/"+ @book.id.to_s,:method=>:patch) do %>
+    <div class="form-group">
+        <%= label_tag "form-title","Title" %>
+        <%= text_field :books, :title, id:"form-title",class:"form-control", value:@book.title %>
+    </div>
+    <div class="form-group">
+        <%= label_tag "form-content","Content" %>
+        <%= text_field :books, :body, id:"form-content",class:"form-control",value:@book.body %>
+    </div>
+    <div class="form-group">
+        <%= label_tag "form-rank","Rank" %>
+        <%= select_tag 'books[rank_id]', options_from_collection_for_select(@ranks, :id, :level),id:"form-rank",class:"form-control" %>
+    </div>
+    <%= submit_tag "Update",class:"btn btn-primary" %>
+<% end %>
